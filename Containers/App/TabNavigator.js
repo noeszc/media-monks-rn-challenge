@@ -1,7 +1,7 @@
 import { createAppContainer, createBottomTabNavigator } from 'react-navigation'
 
-import Photos from '../Containers/Photos'
-import Albums from '../Containers/Albums'
+import Photos from '../Photos'
+import Albums from '../Albums'
 
 const TabNavigator = createBottomTabNavigator({
   Photos: Photos,
