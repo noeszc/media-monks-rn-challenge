@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
-import { invoke } from 'lodash'
+import _ from 'lodash'
 import TabNavigator from './TabNavigator'
 import { startApp } from './actions'
 
 class AppNavigator extends Component {
   componentDidMount() {
-    invoke(this.props, 'onStartApp', {})
+    _.invoke(this.props, 'onStartApp', {})
   }
 
   render() {

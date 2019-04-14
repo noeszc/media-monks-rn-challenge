@@ -1,19 +1,19 @@
 import { createSelector } from 'reselect'
-import { get } from 'lodash'
+import _ from 'lodash'
 
-export const getAlbumsState = (state) => get(state, 'albums')
+export const getAlbumsState = (state) => _.get(state, 'albums')
 
 export const getHasLoading = createSelector(
   [getAlbumsState],
-  (photos) => get(photos, 'loading'),
+  (photos) => _.get(photos, 'loading'),
 )
 
 export const getHasLoadedOnce = createSelector(
   [getAlbumsState],
-  (photos) => get(photos, 'hasLoadedOnce'),
+  (photos) => _.get(photos, 'hasLoadedOnce'),
 )
 
 export const getAlbumsModel = createSelector(
   [getAlbumsState],
-  (photos) => get(photos, 'model'),
+  (photos) => _.get(photos, 'model'),
 )
