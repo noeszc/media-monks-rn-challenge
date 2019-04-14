@@ -1,14 +1,18 @@
 import React from 'react'
 import { Provider } from 'react-redux'
-import { TabNavigator } from './Navigators'
-import configureStore from './configureStore'
+import { PersistGate } from 'redux-persist/integration/react'
 
-const store = configureStore()
+import configureStore from './configureStore'
+import AppNavigator from './containers/App'
+
+const { store, persistor } = configureStore()
 
 export default function App() {
   return (
     <Provider store={store}>
-      <TabNavigator />
+      <PersistGate persistor={persistor}>
+        <AppNavigator />
+      </PersistGate>
     </Provider>
   )
 }

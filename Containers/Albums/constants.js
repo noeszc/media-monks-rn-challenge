@@ -1,3 +1,7 @@
 import { defineAction } from 'redux-define'
-
-export const LOAD_ALBUMS = defineAction('LOAD_ALBUMS', [], 'app/Photos')
+import { ERROR, PENDING, SUCCESS, CANCELLED, APP } from '../App/constants'
+export const LOAD_ALBUMS = defineAction(
+  'LOAD_ALBUMS',
+  [ERROR, PENDING, SUCCESS, CANCELLED],
+  APP,
+)
