@@ -8,20 +8,30 @@ import { getPhotos } from './selectors'
 import ThumbList from '../../components/ThumbList/ThumbList'
 
 class Photos extends Component {
-  static navigationOptions = {
+  static navigationOptions = ({ navigation }) => ({
+    ...(navigation.getParam('title') && {
+      title: navigation.getParam('title'),
+    }),
     tabBarIcon: ({ focused, tintColor }) => {
       const iconName = `image${focused ? '' : '-outline'}`
       return <Icon name={iconName} size={25} color={tintColor} />
     },
-  }
+  })
 
   handleOpenPhoto = () => {
     console.log('handleOpenPhoto()')
   }
 
   render() {
-    const { photos } = this.props
-    return <ThumbList photos={photos} onOpenPhoto={this.handleOpenPhoto} />
+    const { photos, navigation } = this.props
+    const gutter = !_.isNil(_.get(navigation, ['state', 'params', 'id'], null))
+    return (
+      <ThumbList
+        photos={photos}
+        onOpenPhoto={this.handleOpenPhoto}
+        gutter={gutter}
+      />
+    )
   }
 }
 
