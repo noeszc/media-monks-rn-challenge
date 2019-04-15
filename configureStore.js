@@ -23,7 +23,7 @@ export default function configureStore(initialState = {}) {
     persisConfig,
     createReducer(initialState),
   )
-  console.log(persistedReducer)
+
   const composeEnhancers =
     __DEV__ &&
     typeof window === 'object' &&
