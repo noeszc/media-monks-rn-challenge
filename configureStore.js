@@ -39,8 +39,6 @@ export default function configureStore(initialState = {}) {
 
   const persistor = persistStore(store)
 
-  persistor.purge()
-
   sagaMiddleware.run(createSagas)
 
   return { store, persistor }

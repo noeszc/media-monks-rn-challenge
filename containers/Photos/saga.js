@@ -5,7 +5,6 @@ import { pendingLoadPhotos, photosLoadingError, photosLoaded } from './actions'
 import { loadAlbums } from '../Albums/actions'
 
 export function* watchFetchPhotos() {
-  yield console.log('*watchFetchPhotos()')
   yield put(pendingLoadPhotos())
   try {
     const response = yield call(fetchAllPhotos)

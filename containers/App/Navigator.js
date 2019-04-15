@@ -6,6 +6,9 @@ import {
 
 import Photos from '../Photos'
 import Albums from '../Albums'
+import SinglePhoto from '../SinglePhoto'
+
+const navigationOptions = { header: null }
 
 const TabNavigator = createBottomTabNavigator({
   Photos: Photos,
@@ -13,8 +16,9 @@ const TabNavigator = createBottomTabNavigator({
 })
 
 const Stack = createStackNavigator({
-  Main: { screen: TabNavigator, navigationOptions: { header: null } },
+  Main: { screen: TabNavigator, navigationOptions },
   PhotoAlbum: { screen: Photos },
+  SinglePhoto: { screen: SinglePhoto },
 })
 
 export default createAppContainer(Stack)

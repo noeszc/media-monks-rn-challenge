@@ -11,7 +11,7 @@ function ThumbList({ photos: sections, onOpenPhoto: onPress, gutter }) {
       sections={sections}
       style={[styles.container, gutter && styles.noGutter]}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={onPress}>
+        <TouchableOpacity onPress={() => onPress(item)}>
           <Image style={[styles.item]} source={{ uri: item.url }} />
         </TouchableOpacity>
       )}

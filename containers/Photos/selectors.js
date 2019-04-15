@@ -19,6 +19,17 @@ export const getPhotosModel = createSelector(
   (photos) => _.get(photos, 'model'),
 )
 
+export const getPhotosHashMap = createSelector(
+  [getPhotosModel],
+  (photos) => _.keyBy(photos, 'id'),
+)
+
+export const getPhotoById = createSelector(
+  getPhotosHashMap,
+  (state, props) => _.get(props, ['navigation', 'state', 'params', 'id']),
+  (photos, id) => _.get(photos, id),
+)
+
 export const groupPhotosByDate = _.flow(
   (col) =>
     _.groupBy(col, ({ created_at }) =>

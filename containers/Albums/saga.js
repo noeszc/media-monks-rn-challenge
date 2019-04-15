@@ -5,7 +5,6 @@ import { pendingLoadAlbums, albumsLoadingError, albumsLoaded } from './actions'
 import { doneStartApp } from '../App/actions'
 
 export function* watchFetchAlbums() {
-  yield console.log('*watchFetchAlbums()')
   yield put(pendingLoadAlbums())
   try {
     const response = yield call(fetchAllAlbums)
