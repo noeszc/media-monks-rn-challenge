@@ -42,11 +42,22 @@ export const getPhotosGroupByDate = createSelector(
 
 export const getPhotosByAlbumId = createSelector(
   getPhotosModel,
-  (state, props) => _.get(props, 'album_id'),
+  (state, props) => _.get(props, 'id'),
   (photos, album_id) =>
     _.flow(
       (col) => _.groupBy(col, 'album_id'),
       (col) => _.get(col, album_id),
       (col) => groupPhotosByDate(col),
     )(photos),
+)
+
+export const getPhotos = createSelector(
+  (state, props) => ({
+    state,
+    id: _.get(props, ['navigation', 'state', 'params', 'id']),
+  }),
+  ({ state, id }) =>
+    _.isNil(id)
+      ? getPhotosGroupByDate(state)
+      : getPhotosByAlbumId(state, { id }),
 )

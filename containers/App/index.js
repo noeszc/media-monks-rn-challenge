@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
 import _ from 'lodash'
-import TabNavigator from './TabNavigator'
+import Navigator from './Navigator'
 import { startApp } from './actions'
 
 class AppNavigator extends Component {
@@ -11,7 +11,7 @@ class AppNavigator extends Component {
   }
 
   render() {
-    return <TabNavigator />
+    return <Navigator />
   }
 }
 

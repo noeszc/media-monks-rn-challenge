@@ -99,16 +99,24 @@
   ],
   "albums":[
      {
-        "id":"qwjqt0"
+        "id":"qwjqt0",
+        "name":"Street",
+        "url": "https://live.staticflickr.com/4381/37020430702_f9b481a31a_z_d.jpg"
      },
      {
-        "id":"xccmba"
+        "id":"xccmba",
+        "name":"Summer",
+        "url": "https://live.staticflickr.com/4540/38266613321_5b94f0a794_z_d.jpg"
      },
      {
-        "id":"6dvi43"
+        "id":"6dvi43",
+        "name":"Landscape",
+        "url": "https://live.staticflickr.com/4577/26432133579_abbf94bedd_z_d.jpg"
      },
      {
-        "id":"5a9003"
+        "id":"5a9003",
+        "name":"Park",
+        "url": "https://live.staticflickr.com/7839/47397770942_f0b594d670_z_d.jpg"
      }
   ]
 }

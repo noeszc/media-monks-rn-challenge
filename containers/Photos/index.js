@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
-import { Text, View, SectionList, ActivityIndicator } from 'react-native'
 import { connect } from 'react-redux'
 import { compose } from 'redux'
+import _ from 'lodash'
 import { MaterialCommunityIcons as Icon } from '@expo/vector-icons'
-import { getPhotosGroupByDate, getPhotosByAlbumId } from './selectors'
-import Image from '../../components/Image'
+
+import { getPhotos } from './selectors'
+import ThumbList from '../../components/ThumbList/ThumbList'
 
 class Photos extends Component {
   static navigationOptions = {
@@ -14,32 +15,18 @@ class Photos extends Component {
     },
   }
 
+  handleOpenPhoto = () => {
+    console.log('handleOpenPhoto()')
+  }
+
   render() {
     const { photos } = this.props
-    return (
-      <View>
-        <Text> Photos Container</Text>
-        <SectionList
-          renderItem={({ item }) => (
-            <Image
-              source={{ uri: item.url }}
-              style={{ width: 200, height: 200 }}
-              PlaceholderContent={<ActivityIndicator />}
-            />
-          )}
-          renderSectionHeader={({ section: { title } }) => (
-            <Text style={{ fontWeight: 'bold' }}>{title}</Text>
-          )}
-          sections={photos}
-          keyExtractor={(item, index) => item + index}
-        />
-      </View>
-    )
+    return <ThumbList photos={photos} onOpenPhoto={this.handleOpenPhoto} />
   }
 }
 
-const mapStateToProps = (state) => ({
-  photos: getPhotosGroupByDate(state),
+const mapStateToProps = (state, props) => ({
+  photos: getPhotos(state, props),
 })
 
 const withConnect = connect(
