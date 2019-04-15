@@ -18,8 +18,10 @@ class Photos extends Component {
     },
   })
 
-  handleOpenPhoto = () => {
-    console.log('handleOpenPhoto()')
+  handleOpenPhoto = ({ id }) => {
+    _.invoke(this.props, ['navigation', 'navigate'], 'SinglePhoto', {
+      id,
+    })
   }
 
   render() {
