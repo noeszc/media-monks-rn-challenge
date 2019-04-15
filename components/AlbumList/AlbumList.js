@@ -1,22 +1,24 @@
 import React from 'react'
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native'
 import { FlatGrid } from 'react-native-super-grid'
+import { Constants } from 'expo'
 import Image from '../Image'
 
 function AlbumList({ albums: items, onOpenAlbum: onPress }) {
-  console.log(items)
   return (
     <FlatGrid
-      itemDimension={130}
+      itemDimension={132}
       items={items}
-      styles={styles.container}
+      style={styles.container}
       renderItem={({ item }) => (
-        <TouchableOpacity onPress={() => onPress(item)}>
-          {/* <Image style={styles.item} source={{ uri: item.url }} /> */}
-          <View style={styles.item}>
-            <Text>{item.id}</Text>
-          </View>
-        </TouchableOpacity>
+        <View style={styles.item}>
+          <TouchableOpacity onPress={() => onPress(item)}>
+            <Image source={{ uri: item.url }} style={styles.image} />
+            <View>
+              <Text style={styles.name}>{item.name}</Text>
+            </View>
+          </TouchableOpacity>
+        </View>
       )}
     />
   )
@@ -28,14 +30,17 @@ AlbumList.defaultProps = {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: Constants.statusBarHeight,
     flex: 1,
-    marginTop: 32,
   },
   item: {
     justifyContent: 'flex-end',
-    borderRadius: 5,
-    padding: 10,
-    height: 150,
+    height: 132,
+  },
+  image: { width: '100%', height: 100 },
+  name: {
+    fontWeight: 'bold',
+    padding: 8,
   },
 })
 

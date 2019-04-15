@@ -14,10 +14,11 @@ class Albums extends Component {
     },
   }
 
-  handleOpenAlbum = ({ id }) => {
+  handleOpenAlbum = ({ id, name: title }) => {
     console.log({ id })
     _.invoke(this.props, ['navigation', 'navigate'], 'PhotoAlbum', {
       id,
+      title,
     })
   }
   render() {
